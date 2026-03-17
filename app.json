@@ -9,21 +9,28 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0B0609"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
-      }
+        "backgroundColor": "#0B0609",
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundImage": "./assets/adaptive-icon.png",
+        "monochromeImage": "./assets/adaptive-icon.png"
+      },
+      "package": "com.luabfr.anotadordetruco"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2657d6a6-91c8-4a28-85b4-0d1e81d91d3f"
+      }
+    },
+    "owner": "luabfr"
   }
 }
