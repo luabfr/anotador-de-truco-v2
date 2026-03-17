@@ -21,7 +21,20 @@ export const colorTheme = {
 			text2: "#414141",
 			grayButtons: "#999",
 			textHighlighted: "#F76800",
-			sticksTeamColor: ["#004C11", "#5F0000"]
-		}
+			// sticksTeamColor: ["#004C11", "#5F0000"]
+			sticksTeamColor: ["#D4B200", "#009EC1"],
+			sticksTeamColorDark: ["#9D892D", "#45869C"]
+		},
+
+		/*{
+			name: "lightTheme"
+			bg: "#F7F5F2",
+			text1: "#1A1A1A",
+			text2: "#5F5F5F",
+			grayButtons: "#D1CBC5",
+			textHighlighted: "#E85D04",
+			sticksTeamColor: ["#D4B200", "#009EC1"],
+			sticksTeamColorDark: ["#9D892D", "#45869C"]
+		}*/
 	]	
 }

@@ -26,17 +26,17 @@ const HomeScreen = ({ navigation }) => {
 			
 
 			<AppNameTextWrap>
-				<AppNameTextL>
+				<AppNameTextL colorModeSelected={colorModeSelected}>
 					Anotador 
 				</AppNameTextL>
-				<AppNameTextR>
+				<AppNameTextR colorModeSelected={colorModeSelected}>
 					{' '}de Truco
 				</AppNameTextR>
 			</AppNameTextWrap>
 			<LogoMain /> 
 			
 			<MainAllBtns>
-				<MainButtonsWrap>
+				<MainButtonsWrap colorModeSelected={colorModeSelected}>
 					{matchStarted &&
 						<MainButton 
 							label="Volver a la partida" 

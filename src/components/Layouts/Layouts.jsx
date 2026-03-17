@@ -23,7 +23,7 @@ export const Flex = styled.View`
 
 export const MainApp = styled.View`
   flex: 1;
-	background-color: #fff;
+	background-color: ${props => props.bg ? props.bg : '#fff'};
 	align-items: center;
 	justify-content: center;
 	font-size: 20px;
