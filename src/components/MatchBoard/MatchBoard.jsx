@@ -16,10 +16,10 @@ const MatchBoard = () => {
 	
 	
 	const [forceBoardView, setForceBoardView] = useState(false);
-	const hasWinnerByPoints = ((teamAPoints === roundPoints) || (teamBPoints === roundPoints)) ? true : false;
+	const hasWinnerByPoints = ((teamAPoints >= roundPoints) || (teamBPoints >= roundPoints)) ? true : false;
 	let weHaveAWinner = hasWinnerByPoints && !forceBoardView;
 	// weHaveAWinner = true
-	let winnerIsTeamA = ( teamAPoints === roundPoints ) ? true : false;
+	let winnerIsTeamA = ( teamAPoints >= roundPoints ) ? true : false;
 	let labelForWinner1 = winnerIsTeamA ? `Ganamos` : `Ganaron` ;
 	let labelForWinner2 = winnerIsTeamA ? `${teamAPoints} a ${teamBPoints}` : `${teamBPoints} a ${teamAPoints}`;
 	let labelForWinner3 = winnerIsTeamA ? `NOSOTROS` : `ELLOS`;

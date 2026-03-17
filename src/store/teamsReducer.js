@@ -68,6 +68,9 @@ const teamsSlice = createSlice({
       })
       .addCase("SET_COLORS_PRESET", (state, action) => {
         state.matchConfiguration.colorsPreset = action.payload.selectedPreset;
+      })
+      .addCase("SET_ROUND_POINTS", (state, action) => {
+        state.matchConfiguration.roundPoints = action.payload.roundPoints;
       });
   },
 });
