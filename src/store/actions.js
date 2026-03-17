@@ -24,4 +24,8 @@ export const setColorsPreset = ( selectedPreset ) => ({
   payload: { selectedPreset }
 });
 
+export const setRoundPoints = ( roundPoints ) => ({
+  type: 'SET_ROUND_POINTS',
+  payload: { roundPoints }
+});
 
