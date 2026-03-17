@@ -17,7 +17,7 @@ export const ButtonsContainer = styled.View`
 	justify-content: space-evenly;
 	padding: 20px;
 	position: absolute;
-	bottom: 0;
+	bottom: 16px;
 	width: 100%;
 `;
 

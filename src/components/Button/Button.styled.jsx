@@ -52,7 +52,10 @@ const ButtonAddPointsWrapper = styled.View`
 const ButtonAddPointsX = styled.View`
   height: ${Math.round(screenHeight * 0.03)}px;
   width: ${Math.round(screenHeight * 0.008)}px;
-  background: ${props => (`${colorTheme.mode[props.colorModeSelected].text1}`)};
+  background: ${props =>
+    props.colorModeSelected === 1
+      ? `${colorTheme.mode[1].bg}`
+      : `${colorTheme.mode[props.colorModeSelected].text1}`};
   position: absolute;
   top: 25%;
   left: ${Math.round(screenHeight * 0.026)}px;
@@ -61,7 +64,10 @@ const ButtonAddPointsX = styled.View`
 const ButtonAddPointsY = styled.View`
   height: ${Math.round(screenHeight * 0.008)}px;
   width: ${Math.round(screenHeight * 0.03)}px;
-  background: ${props => (`${colorTheme.mode[props.colorModeSelected].text1}`)};
+  background: ${props =>
+    props.colorModeSelected === 1
+      ? `${colorTheme.mode[1].bg}`
+      : `${colorTheme.mode[props.colorModeSelected].text1}`};
   position: absolute;
   top: ${Math.round(screenHeight * 0.026)}px;
   left: 25%;
@@ -70,7 +76,10 @@ const ButtonAddPointsY = styled.View`
 export const ButtonRemovePoints  = styled.View`
   height: ${Math.round(screenHeight * 0.008)}px;
   width: ${Math.round(screenHeight * 0.03)}px;
-  background: ${ props => `${colorTheme.mode[props.colorModeSelected].text1}` };
+  background: ${props =>
+    props.colorModeSelected === 1
+      ? `${colorTheme.mode[1].bg}`
+      : `${colorTheme.mode[props.colorModeSelected].text1}`};
 `;
 
 
@@ -89,7 +98,7 @@ export const MainButtonStyled = styled.TouchableOpacity`
   ${props =>
     (props.borderBottom && css`
       border-bottom-width: 1px;
-      border-bottom-color: #333;
+      border-bottom-color: ${colorTheme.mode[props.colorModeSelected].grayButtons};
     `)
   };
 
@@ -105,7 +114,7 @@ export const MainButtonStyled = styled.TouchableOpacity`
 export const MainButtonText = styled.Text`
   font-size: 20px;
 	font-weight: bold;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 
 	/* font-family: 'Poppins-Bold';*/
 	color: ${props => (`${colorTheme.mode[props.colorModeSelected].text1}`)};
@@ -123,7 +132,8 @@ export const MainButton = ({ label,onPress,mt100,alignLeft,absoluteBottom,border
       mt100={mt100} 
       alignLeft={alignLeft} 
       borderBottom={borderBottom}
-      absoluteBottom={absoluteBottom}>
+      absoluteBottom={absoluteBottom}
+      colorModeSelected={colorModeSelected}>
       <MainButtonText colorModeSelected={colorModeSelected}>
         {label}
       </MainButtonText>

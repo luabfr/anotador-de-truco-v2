@@ -31,7 +31,7 @@ export const AppNameTextWrap = styled.View`
 `
 export const AppNameTextL = styled.Text`
 	font-size: 20px;
-	color: ${ `${colorTheme.mode[0].sticksTeamColor[0]}` };
+	color: ${ props => `${colorTheme.mode[(props.colorModeSelected ?? 0)].sticksTeamColor[0]}` };
 	text-transform: uppercase;
 	text-align: center;
 	font-weight: 600;
@@ -39,7 +39,7 @@ export const AppNameTextL = styled.Text`
 `
 export const AppNameTextR = styled.Text`
 	font-size: 20px;
-	color: ${ `${colorTheme.mode[0].sticksTeamColor[1]}` };
+	color: ${ props => `${colorTheme.mode[(props.colorModeSelected ?? 0)].sticksTeamColor[1]}` };
 	text-transform: uppercase;
 	text-align: center;	
 	font-weight: 600;
@@ -47,7 +47,7 @@ export const AppNameTextR = styled.Text`
 
 export const MainButtonsWrap = styled.View`
 	border-width: 1px;
-	border-color: #333;
+	border-color: ${ props => `${colorTheme.mode[(props.colorModeSelected ?? 0)].grayButtons}` };
 	border-radius: 5px;
 	padding: 0 20px;
 	

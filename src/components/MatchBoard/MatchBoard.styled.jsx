@@ -1,5 +1,9 @@
 import styled , {css} from 'styled-components/native';
+import { Dimensions } from 'react-native';
 import { colorTheme } from '../colorTheme';
+
+const windowDimensions = Dimensions.get('window');
+const screenHeight = windowDimensions.height;
 
 export const MBContainer = styled.SafeAreaView`
   height: 50%;
@@ -7,6 +11,7 @@ export const MBContainer = styled.SafeAreaView`
 	flex: 1;
 	flex-direction: row;
 	justify-content: center;
+	position: relative;
 `;
 
 export const ModalWrap = styled.View`
@@ -33,7 +38,7 @@ export const ModButtonsWrapper = styled.View`
 	position: absolute;
   top: 10px;
 	border-width: 1px ;
-	border-color: #333;
+	border-color: ${ props => `${colorTheme.mode[props.colorModeSelected].grayButtons}` };
 	border-radius: 10px;
 `;
 
@@ -43,7 +48,7 @@ export const ModSvgWrap = styled.View`
 `;
 
 export const WinnersText1 = styled.Text`
-	color: #BBB;
+	color: ${ props => `${colorTheme.mode[props.colorModeSelected].text2}` };
 	font-size: 24px;
   font-weight: bold;
 	text-align: center;
@@ -62,7 +67,7 @@ export const WinnersText2 = styled.Text`
 
 
 export const WinnersText3 = styled.Text`
-	color: white;
+	color: ${ props => `${colorTheme.mode[props.colorModeSelected].text1}` };
 	font-size: 38px;
 	font-weight: bold;
 	text-align: center;
@@ -76,13 +81,13 @@ export const ModalButtons = styled.TouchableOpacity`
 	
 	${(props) => props.borderBottom && css`
 		border-bottom-width: 1px;
-		border-color: #333;`
+		border-color: ${colorTheme.mode[props.colorModeSelected].grayButtons};`
 	};  
 `;
 
 export const ModButtonLabel = styled.Text`
   display: flex; 
-	color: #bbb;
+	color: ${ props => `${colorTheme.mode[props.colorModeSelected].text2}` };
   font-size: 20px;
   font-weight: bold;
   justify-content: center;
@@ -90,4 +95,24 @@ export const ModButtonLabel = styled.Text`
 	text-align: center;
 `;
 
+export const OptionsButton = styled.TouchableOpacity`
+	height: ${Math.round(screenHeight * 0.06)}px;
+  width: ${Math.round(screenHeight * 0.06)}px;
+	border-radius: ${Math.round(screenHeight * 0.03)}px;
+	background: ${ props => `${colorTheme.mode[props.colorModeSelected].textHighlighted}` };
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	bottom: 64px;
+	left: 50%;
+	margin-left: ${-Math.round(screenHeight * 0.03)}px;
+`;
 
+export const OptionsButtonLabel = styled.Text`
+	font-size: 14px;
+	font-weight: bold;
+	color: ${props =>
+		props.colorModeSelected === 1
+			? `${colorTheme.mode[1].bg}`
+			: `${colorTheme.mode[props.colorModeSelected].text1}`};
+`;

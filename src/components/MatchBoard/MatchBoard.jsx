@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import PlayerBoard from '../PlayerBoard/PlayerBoard';
 import { useSelector,useDispatch } from 'react-redux';
-import { MBContainer,ModalWrap,ModalButtons,ModButtonLabel,WinnersText1,WinnersText2,WinnersText3,ModWinnersGroup,ModSvgWrap,ModButtonsWrapper } from './MatchBoard.styled';
+import { useNavigation } from '@react-navigation/native';
+import { MBContainer,ModalWrap,ModalButtons,ModButtonLabel,WinnersText1,WinnersText2,WinnersText3,ModWinnersGroup,ModSvgWrap,ModButtonsWrapper,OptionsButton,OptionsButtonLabel } from './MatchBoard.styled';
 import { resetPoints, removePointsToTeam } from '../../store/actions';
 import { colorTheme } from '../colorTheme';
 import CupSvg from '../CupSvg/CupSvg';
 
 const MatchBoard = () => {
+	const navigation = useNavigation();
 	const teamAPoints = useSelector((state) => state.teamsReducer.teams[0].points)
 	const teamBPoints = useSelector((state) => state.teamsReducer.teams[1].points)
 	const colorModeSelected = useSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset)
@@ -52,6 +54,9 @@ const MatchBoard = () => {
 		dispatch(resetPoints());
 	};
 
+	const handleOptionsPress = () => {
+		navigation.navigate('ScreenOptions');
+	};
 
 	return (
 		<MBContainer>
@@ -59,6 +64,9 @@ const MatchBoard = () => {
 				<>
 					<PlayerBoard team={0} borderRight={true} />
 					<PlayerBoard team={1}  />
+					<OptionsButton colorModeSelected={colorModeSelected} onPress={handleOptionsPress}>
+						<OptionsButtonLabel colorModeSelected={colorModeSelected}>OPC</OptionsButtonLabel>
+					</OptionsButton>
 				</>
 			}
 
@@ -68,7 +76,7 @@ const MatchBoard = () => {
 
 					
 					{/* Absolute: Top */}
-					<ModButtonsWrapper>
+					<ModButtonsWrapper colorModeSelected={colorModeSelected}>
 						{/* Nueva partida */}
 						<ModalButtons
 							borderBottom={true}
@@ -95,7 +103,7 @@ const MatchBoard = () => {
 
 					<ModWinnersGroup>
 						
-						<WinnersText1>  
+						<WinnersText1 colorModeSelected={colorModeSelected}>  
 							{labelForWinner1} 
 						</WinnersText1>
 						
@@ -108,7 +116,7 @@ const MatchBoard = () => {
 							{labelForWinner3}
 						</WinnersText2>
 
-						<WinnersText3 color={winnerColor}>
+						<WinnersText3 colorModeSelected={colorModeSelected} color={winnerColor}>
 							{labelForWinner2}
 						</WinnersText3>
 					</ModWinnersGroup>
