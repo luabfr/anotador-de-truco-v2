@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider, useSelector } from 'react-redux'
 import store from './src/store/store';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import { Platform } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ScreenMatch from './src/screens/ScreenMatch/ScreenMatch';
@@ -43,7 +44,8 @@ const RootNavigator = () => {
         </RootStack.Group>
         <RootStack.Group
           screenOptions={{
-            presentation: 'modal',
+            presentation: 'card',
+            animation: Platform.OS === 'android' ? 'fade' : 'default',
             headerStyle: { backgroundColor: `${colorTheme.mode[0].bg}` },
             headerTintColor: `${colorTheme.mode[0].text2}`,
             headerTitleStyle: { fontWeight: 'normal' },
@@ -62,7 +64,8 @@ const RootNavigator = () => {
         </RootStack.Group>
         <RootStack.Group
           screenOptions={{
-            presentation: 'modal',
+            presentation: 'card',
+            animation: Platform.OS === 'android' ? 'fade' : 'default',
             headerStyle: { backgroundColor: `${colorTheme.mode[0].bg}` },
             headerTintColor: `${colorTheme.mode[0].text2}`,
             headerTitleStyle: { fontWeight: 'bold' },

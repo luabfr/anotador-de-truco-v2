@@ -98,8 +98,8 @@ export const ModButtonLabel = styled.Text`
 export const OptionsButton = styled.TouchableOpacity`
 	height: ${Math.round(screenHeight * 0.06)}px;
   width: ${Math.round(screenHeight * 0.06)}px;
-	border-radius: 5px;
-	background: ${ props => `${colorTheme.mode[props.colorModeSelected].grayButtons}` };
+	border-radius: ${Math.round(screenHeight * 0.03)}px;
+	background: ${ props => `${colorTheme.mode[props.colorModeSelected].textHighlighted}` };
 	align-items: center;
 	justify-content: center;
 	position: absolute;
@@ -116,5 +116,3 @@ export const OptionsButtonLabel = styled.Text`
 			? `${colorTheme.mode[1].bg}`
 			: `${colorTheme.mode[props.colorModeSelected].text1}`};
 `;
-
-

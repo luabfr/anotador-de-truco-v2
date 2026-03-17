@@ -114,7 +114,7 @@ export const MainButtonStyled = styled.TouchableOpacity`
 export const MainButtonText = styled.Text`
   font-size: 20px;
 	font-weight: bold;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 
 	/* font-family: 'Poppins-Bold';*/
 	color: ${props => (`${colorTheme.mode[props.colorModeSelected].text1}`)};
