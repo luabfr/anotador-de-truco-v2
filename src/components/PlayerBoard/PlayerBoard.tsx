@@ -3,10 +3,15 @@ import Button from '../Button/Button';
 import { PlayerBoardContainer,ButtonsContainer } from './PlayerBoard.styled';
 import TeamName from '../TeamName/TeamName';
 import DisplayMatchsticks from '../DisplayMatchsticks/DisplayMatchsticks';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../store/hooks';
 
-const PlayerBoard = ({ team,borderRight }) => {
-	const colorModeSelected = useSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset)
+type Props = {
+	team: number;
+	borderRight?: boolean;
+};
+
+const PlayerBoard = ({ team,borderRight }: Props) => {
+	const colorModeSelected = useAppSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset)
 	
 	return (
 		<PlayerBoardContainer colorModeSelected={colorModeSelected} borderRight={borderRight}>

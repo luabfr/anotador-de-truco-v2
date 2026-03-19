@@ -1,5 +1,5 @@
 import React from 'react';
-import { Provider, useSelector } from 'react-redux'
+import { Provider } from 'react-redux'
 import store from './src/store/store';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { Platform } from 'react-native';
@@ -9,11 +9,15 @@ import ScreenMatch from './src/screens/ScreenMatch/ScreenMatch';
 import ScreenHome from './src/screens/ScreenHome/ScreenHome';
 import ScreenOptions from './src/screens/ScreenOptions/ScreenOptions';
 import { colorTheme } from './src/components/colorTheme';
+import type { RootStackParamList } from './src/navigation/types';
+import { useAppSelector } from './src/store/hooks';
 
-const RootStack = createNativeStackNavigator();
+const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
-  const colorModeSelected = useSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset);
+  const colorModeSelected = useAppSelector(
+    (state) => state.teamsReducer.matchConfiguration.colorsPreset
+  );
   const screenBg = (colorTheme.mode[colorModeSelected] && colorTheme.mode[colorModeSelected].bg)
     ? colorTheme.mode[colorModeSelected].bg
     : colorTheme.mode[0].bg;
@@ -45,10 +49,6 @@ const RootNavigator = () => {
         <RootStack.Group
           screenOptions={{
             presentation: 'card',
-            animation: Platform.OS === 'android' ? 'fade' : 'default',
-            headerStyle: { backgroundColor: `${colorTheme.mode[0].bg}` },
-            headerTintColor: `${colorTheme.mode[0].text2}`,
-            headerTitleStyle: { fontWeight: 'normal' },
             headerShadowVisible: false,
             contentStyle: { backgroundColor: screenBg },
             statusBarColor: screenBg,
@@ -57,19 +57,12 @@ const RootNavigator = () => {
             name="ScreenMatch"
             component={ScreenMatch}
             options={{
-              title: "Ver Menu",
-              headerBackVisible: false,
               headerShown: false
             }} />
         </RootStack.Group>
         <RootStack.Group
           screenOptions={{
             presentation: 'card',
-            animation: Platform.OS === 'android' ? 'fade' : 'default',
-            headerStyle: { backgroundColor: `${colorTheme.mode[0].bg}` },
-            headerTintColor: `${colorTheme.mode[0].text2}`,
-            headerTitleStyle: { fontWeight: 'bold' },
-            headerShadowVisible: false,              
             contentStyle: { backgroundColor: screenBg },
             statusBarColor: screenBg,
           }}>
@@ -77,8 +70,6 @@ const RootNavigator = () => {
             name="ScreenOptions"
             component={ScreenOptions}
             options={{ 
-              title: "Volver", 
-              headerBackVisible: false,
               headerShown: false
           }} />
         </RootStack.Group>

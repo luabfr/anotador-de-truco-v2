@@ -1,11 +1,15 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { DisplayMatchsticksContainer,StickGroup,StickTop,StickRight,StickBottom,StickLeft,StickDiagonal } from './DisplayMatchsticks.styled';
+import { useAppSelector } from '../../store/hooks';
 
-const DisplayMatchsticks = ({ team }) => {
-	const teamPoints = useSelector((state) => state.teamsReducer.teams[team].points)
-	const colorModeSelected = useSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset)
-	const roundPoints = useSelector((state) => state.teamsReducer.matchConfiguration.roundPoints)
+type Props = {
+	team: number;
+};
+
+const DisplayMatchsticks = ({ team }: Props) => {
+	const teamPoints = useAppSelector((state) => state.teamsReducer.teams[team].points)
+	const colorModeSelected = useAppSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset)
+	const roundPoints = useAppSelector((state) => state.teamsReducer.matchConfiguration.roundPoints)
 	const basePoints = 15;
 	const isFullMatch = roundPoints > basePoints;
 	const buenasActive = isFullMatch && teamPoints > basePoints;

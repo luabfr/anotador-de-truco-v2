@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import PlayerBoard from '../PlayerBoard/PlayerBoard';
-import { useSelector,useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { MBContainer,ModalWrap,ModalButtons,ModButtonLabel,WinnersText1,WinnersText2,WinnersText3,ModWinnersGroup,ModSvgWrap,ModButtonsWrapper,OptionsButton,OptionsButtonLabel } from './MatchBoard.styled';
 import { resetPoints, removePointsToTeam } from '../../store/actions';
 import { colorTheme } from '../colorTheme';
 import CupSvg from '../CupSvg/CupSvg';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '../../navigation/types';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
 const MatchBoard = () => {
-	const navigation = useNavigation();
-	const teamAPoints = useSelector((state) => state.teamsReducer.teams[0].points)
-	const teamBPoints = useSelector((state) => state.teamsReducer.teams[1].points)
-	const colorModeSelected = useSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset)
-	const roundPoints = useSelector((state) => state.teamsReducer.matchConfiguration.roundPoints)
+	const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+	const teamAPoints = useAppSelector((state) => state.teamsReducer.teams[0].points)
+	const teamBPoints = useAppSelector((state) => state.teamsReducer.teams[1].points)
+	const colorModeSelected = useAppSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset)
+	const roundPoints = useAppSelector((state) => state.teamsReducer.matchConfiguration.roundPoints)
 
 
 	
@@ -36,7 +38,7 @@ const MatchBoard = () => {
 		}
 	}, [hasWinnerByPoints, forceBoardView]);
 
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const handleSeeBoardButton = () => {
 		setForceBoardView(true);
 

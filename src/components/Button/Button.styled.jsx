@@ -2,7 +2,7 @@ import styled , {css} from 'styled-components/native';
 import React from 'react'
 import { Dimensions } from 'react-native';
 import { colorTheme } from '../colorTheme';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../store/hooks';
 
 
 
@@ -32,7 +32,7 @@ export const TheButton = styled.TouchableOpacity`
 
 export const ButtonAddPoints = () =>{
 
-  const colorModeSelected = useSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset)
+  const colorModeSelected = useAppSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset)
   
   return(
     <ButtonAddPointsWrapper>
@@ -124,7 +124,7 @@ export const MainButtonText = styled.Text`
 
 export const MainButton = ({ label,onPress,mt100,alignLeft,absoluteBottom,borderBottom } ) =>{
 
-  const colorModeSelected = useSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset)
+  const colorModeSelected = useAppSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset)
 
   return (
     <MainButtonStyled 

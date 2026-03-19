@@ -1,12 +1,12 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useSelector } from 'react-redux';
 import { MainApp } from '../../components/Layouts/Layouts';
 import MatchBoard from '../../components/MatchBoard/MatchBoard';
 import { colorTheme } from '../../components/colorTheme';
+import { useAppSelector } from '../../store/hooks';
 
-const ScreenMatch = ({ navigation }) => {
-	const colorModeSelected = useSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset);
+const ScreenMatch = () => {
+	const colorModeSelected = useAppSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset);
 	const screenBg = colorTheme.mode[colorModeSelected].bg;
 
 	return (

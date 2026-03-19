@@ -1,22 +1,24 @@
 import React , { FC } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
 import { addPointsToTeam, removePointsToTeam } from '../../store/actions';
 import { TheButton, ButtonLabel, ButtonAddPoints, ButtonRemovePoints } from './Button.styled';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
 
 interface ButtonProps {
 	teamId: number,
-	title: string, 
-	addPoints: boolean, 
-	removePoints: boolean,
+	title?: string, 
+	addPoints?: boolean, 
+	removePoints?: boolean,
+	accessibilityLabel?: string,
+	p0?: boolean,
 }
 
 
-const Button: FC<ButtonProps> = ({ teamId, title, addPoints, removePoints  }) => {
-	const dispatch = useDispatch();
-	const teamPoints = useSelector((state) => state.teamsReducer.teams[teamId].points);
-	const matchPoints = useSelector((state) => state.teamsReducer.matchConfiguration.roundPoints);
-	const colorModeSelected = useSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset)
+const Button: FC<ButtonProps> = ({ teamId, title, addPoints, removePoints, accessibilityLabel }) => {
+	const dispatch = useAppDispatch();
+	const teamPoints = useAppSelector((state) => state.teamsReducer.teams[teamId].points);
+	const matchPoints = useAppSelector((state) => state.teamsReducer.matchConfiguration.roundPoints);
+	const colorModeSelected = useAppSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset)
 
 
 
@@ -29,14 +31,18 @@ const Button: FC<ButtonProps> = ({ teamId, title, addPoints, removePoints  }) =>
 	};
 
 	return (
-		<TheButton onPress={handlePress} colorModeSelected={colorModeSelected}>
+		<TheButton
+			onPress={handlePress}
+			colorModeSelected={colorModeSelected}
+			accessibilityLabel={accessibilityLabel}
+		>
 			{addPoints && 
 				<ButtonAddPoints colorModeSelected={colorModeSelected} />
 			}
 			{removePoints &&
 				<ButtonRemovePoints colorModeSelected={colorModeSelected} />
 			}
-			{(!addPoints && !removePoints) &&
+			{(!addPoints && !removePoints && title) &&
 				<ButtonLabel colorModeSelected={colorModeSelected}>{title}</ButtonLabel>
 			}
 			

@@ -1,23 +1,27 @@
 import React from 'react';
 import { ScrollView, Text } from 'react-native';
 import styled from 'styled-components/native';
-import { useSelector } from 'react-redux';
 import { colorTheme } from '../../components/colorTheme';
+import { useAppSelector } from '../../store/hooks';
 
-const Container = styled(ScrollView)`
+type ColorModeProps = {
+	colorModeSelected: number;
+};
+
+const Container = styled(ScrollView)<ColorModeProps>`
 	flex: 1;
 	background-color: ${props => `${colorTheme.mode[props.colorModeSelected].bg}`};
 	padding: 20px;
 `;
 
-const Title = styled(Text)`
+const Title = styled(Text)<ColorModeProps>`
 	font-size: 24px;
 	font-weight: 700;
 	color: ${props => `${colorTheme.mode[props.colorModeSelected].text1}`};
 	margin-bottom: 16px;
 `;
 
-const Paragraph = styled(Text)`
+const Paragraph = styled(Text)<ColorModeProps>`
 	font-size: 16px;
 	line-height: 24px;
 	color: ${props => `${colorTheme.mode[props.colorModeSelected].text2}`};
@@ -25,7 +29,7 @@ const Paragraph = styled(Text)`
 `;
 
 const ScreenPrivatePolicy = () => {
-	const colorModeSelected = useSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset);
+	const colorModeSelected = useAppSelector((state) => state.teamsReducer.matchConfiguration.colorsPreset);
 
 	return (
 		<Container colorModeSelected={colorModeSelected}>

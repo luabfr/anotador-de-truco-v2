@@ -3,7 +3,7 @@ import { BackHandler } from 'react-native';
 import { MainButton } from '../Button/Button.styled';
 import { MainButtonsWrap } from '../../screens/ScreenHome/ScreenHome.styled';
 
-const ButtonCloseApp =()=>{
+const ButtonCloseApp = () => {
 	const handlePress = () => {
 		BackHandler.exitApp();
 	};
